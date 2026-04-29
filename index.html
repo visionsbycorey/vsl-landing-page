@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visions By Corey - Local Authority Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 20px 20px 15px;
+            border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .logo span {
+            color: #D4A843;
+        }
+
+        /* Hero Section - Condensed */
+        .hero {
+            text-align: center;
+            padding: 20px 20px 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid #D4A843;
+            border-radius: 50px;
+            padding: 8px 16px;
+            margin-bottom: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #D4A843;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .highlight {
+            color: #D4A843;
+        }
+
+        .hero p {
+            font-size: 14px;
+            color: #a0a0a0;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        /* Video Section - Condensed */
+        .video-section {
+            margin: 15px 0 20px 0;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #000;
+            margin-bottom: 10px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+        }
+
+        .video-wrapper {
+            position: relative;
+        }
+
+        .unmute-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(212, 168, 67, 0.95);
+            color: #000;
+            border: none;
+            padding: 16px 28px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 8px 24px rgba(212, 168, 67, 0.4);
+        }
+
+        .unmute-button:hover {
+            background: #e8b84f;
+            transform: translate(-50%, -50%) scale(1.05);
+            box-shadow: 0 12px 32px rgba(212, 168, 67, 0.5);
+        }
+
+        .unmute-button:active {
+            transform: translate(-50%, -50%) scale(0.98);
+        }
+
+        .unmute-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .unmute-button.hidden {
+            display: none;
+        }
+
+        .video-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 12px;
+            color: #808080;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .video-note svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        /* CTA Section - Condensed */
+        .cta-section {
+            text-align: center;
+            padding: 25px 20px;
+            background: rgba(212, 168, 67, 0.05);
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            font-size: 14px;
+            color: #a0a0a0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #D4A843;
+            color: #000;
+            border: none;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+        }
+
+        .cta-button:hover {
+            background: #e8b84f;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 168, 67, 0.3);
+        }
+
+        .cta-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .time-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #808080;
+        }
+
+        .time-note svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            margin: 10% auto;
+            padding: 30px;
+            border: 1px solid rgba(212, 168, 67, 0.2);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 450px;
+            max-height: 85vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+        }
+
+        .modal-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #a0a0a0;
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            color: #D4A843;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #a0a0a0;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 11px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 168, 67, 0.2);
+            border-radius: 6px;
+            color: #e0e0e0;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group select::placeholder,
+        .form-group textarea::placeholder {
+            color: #606060;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #D4A843;
+            box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23D4A843' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 35px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 13px;
+            background: #D4A843;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .submit-btn:hover {
+            background: #e8b84f;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 168, 67, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #888;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .privacy-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 11px;
+            color: #808080;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(212, 168, 67, 0.1);
+        }
+
+        .privacy-note svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(76, 175, 80, 0.1);
+            border: 1px solid #4CAF50;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 15px;
+            color: #4CAF50;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .error-message {
+            display: none;
+            background: rgba(244, 67, 54, 0.1);
+            border: 1px solid #F44336;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 15px;
+            color: #F44336;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 20px;
+            border-top: 1px solid rgba(212, 168, 67, 0.2);
+            margin-top: 30px;
+        }
+
+        .footer-logo {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-logo span {
+            color: #D4A843;
+        }
+
+        .footer-email {
+            color: #808080;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .footer-copyright {
+            font-size: 11px;
+            color: #606060;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .cta-section h2 {
+                font-size: 22px;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                margin: 30% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">VISIONS <span>BY COREY</span> MEDIA LLC</div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="badge">🔒 Central Connecticut — Limited Spots Available</div>
+            <h1>How Connecticut<br>Service Businesses Are<br><span class="highlight">Dominating Their Local Market</span><br>With One Simple Ad</h1>
+            <p>Watch the short video below to see exactly how it works.</p>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe 
+                        id="vslVideo"
+                        src="https://www.youtube.com/embed/OdxcyI2dAGk?autoplay=1&mute=1&controls=1&rel=0" 
+                        allowfullscreen="" 
+                        allow="autoplay; encrypted-media"
+                        title="Visions By Corey - Local Authority Program">
+                    </iframe>
+                </div>
+                <button class="unmute-button" id="unmuteBtn" onclick="unmuteVideo()">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.26 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
+                    </svg>
+                    Unmute Video
+                </button>
+            </div>
+            <div class="video-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 7l-7 5 7 5V7z"></path>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+                <span>🔊 Click "Unmute Video" to enable sound and watch the full presentation.</span>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready To Get Started?</h2>
+            <p>Fill out this quick 1-minute form and we'll reach out to see if you're a good fit.<br>After submitting you'll be able to book your free discovery call.</p>
+            <button class="cta-button" onclick="openModal()">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9 5a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM3 14a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3z"></path>
+                </svg>
+                Fill Out The Quick Form
+            </button>
+            <div class="time-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>Takes less than 1 minute</span>
+            </div>
+        </section>
+    </div>
+
+    <!-- Form Modal -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Apply For The Local Authority Program</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                ✓ Application submitted! Redirecting to book your discovery call...
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                ✗ There was an error submitting your application. Please try again.
+            </div>
+
+            <form id="applicationForm" onsubmit="handleFormSubmit(event)">
+                <!-- First Name -->
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="First name" required>
+                </div>
+
+                <!-- Last Name -->
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
+                </div>
+
+                <!-- Business Name -->
+                <div class="form-group">
+                    <label for="businessName">Business Name</label>
+                    <input type="text" id="businessName" name="businessName" placeholder="Your business name" required>
+                </div>
+
+                <!-- Business Type -->
+                <div class="form-group">
+                    <label for="businessType">Business Type</label>
+                    <select id="businessType" name="businessType" required>
+                        <option value="">Select your industry</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="HVAC">HVAC</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Roofing">Roofing</option>
+                        <option value="Landscaping">Landscaping</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Painting">Painting</option>
+                        <option value="Carpentry">Carpentry</option>
+                        <option value="Masonry">Masonry</option>
+                        <option value="Real Estate">Real Estate</option>
+                        <option value="Med Spa">Med Spa</option>
+                        <option value="Salon/Spa">Salon/Spa</option>
+                        <option value="Fitness">Fitness</option>
+                        <option value="Detailing">Detailing</option>
+                        <option value="Contracting">Contracting</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required>
+                </div>
+
+                <!-- City -->
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" placeholder="Waterbury, CT" required>
+                </div>
+
+                <!-- Current Monthly Revenue -->
+                <div class="form-group">
+                    <label for="revenue">Current Monthly Revenue</label>
+                    <select id="revenue" name="revenue" required>
+                        <option value="">Select your current revenue</option>
+                        <option value="Under $5k">Under $5,000</option>
+                        <option value="$5k - $10k">$5,000 - $10,000</option>
+                        <option value="$10k - $25k">$10,000 - $25,000</option>
+                        <option value="$25k - $50k">$25,000 - $50,000</option>
+                        <option value="$50k - $100k">$50,000 - $100,000</option>
+                        <option value="$100k+">$100,000+</option>
+                    </select>
+                </div>
+
+                <!-- Biggest Challenge -->
+                <div class="form-group">
+                    <label for="challenge">Biggest Challenge Right Now</label>
+                    <textarea id="challenge" name="challenge" placeholder="e.g. Not enough consistent leads..." required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submitBtn">Submit & Book My Discovery Call →</button>
+
+                <!-- Privacy Note -->
+                <div class="privacy-note">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"></path>
+                    </svg>
+                    <span>Your info is 100% private and never shared. You'll be redirected to book your call right after submitting.</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">VISIONS <span>BY COREY</span> MEDIA LLC</div>
+        <div class="footer-email">info@visionsbycorey.com</div>
+        <div class="footer-copyright">© 2026 Visions By Corey Media LLC — All Rights Reserved</div>
+    </footer>
+
+    <script>
+        // Modal Functions
+        function openModal() {
+            document.getElementById('formModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('formModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('formModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Handle Form Submission
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+
+            // Get form data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                businessName: document.getElementById('businessName').value,
+                businessType: document.getElementById('businessType').value,
+                phone: document.getElementById('phone').value,
+                city: document.getElementById('city').value,
+                revenue: document.getElementById('revenue').value,
+                challenge: document.getElementById('challenge').value,
+                submittedAt: new Date().toISOString()
+            };
+
+            // Disable submit button
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            // Hide error message
+            document.getElementById('errorMessage').style.display = 'none';
+
+            try {
+                // Send to backend
+                const response = await fetch('/api/submit-form', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to submit form');
+                }
+
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+
+                // Redirect to Calendly after a short delay
+                setTimeout(() => {
+                    window.location.href = 'https://calendly.com/visionsbycorey-info/discoverycall';
+                }, 1500);
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('errorMessage').style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit & Book My Discovery Call →';
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Unmute Video Function
+        function unmuteVideo() {
+            const iframe = document.getElementById('vslVideo');
+            const unmuteBtn = document.getElementById('unmuteBtn');
+            
+            // Update iframe src to remove mute parameter
+            const currentSrc = iframe.src;
+            const newSrc = currentSrc.replace('&mute=1', '');
+            iframe.src = newSrc;
+            
+            // Hide the unmute button
+            unmuteBtn.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
