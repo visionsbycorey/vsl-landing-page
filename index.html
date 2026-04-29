@@ -30,12 +30,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 20px 15px;
+            padding: 15px 20px;
             border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+            gap: 20px;
         }
 
         .header-left {
-            flex: 1;
+            flex: 0 0 auto;
         }
 
         .header-center {
@@ -44,8 +45,7 @@
         }
 
         .header-right {
-            flex: 1;
-            text-align: right;
+            flex: 0 0 auto;
         }
 
         .instagram-link {
@@ -535,14 +535,30 @@
         @media (max-width: 768px) {
             header {
                 flex-wrap: wrap;
-                gap: 15px;
+                padding: 15px 10px;
             }
 
-            .header-left,
-            .header-center,
-            .header-right {
+            .header-left {
+                flex: 0 0 auto;
+            }
+
+            .header-center {
                 flex: 1 1 100%;
-                text-align: center;
+                order: -1;
+                margin-bottom: 10px;
+            }
+
+            .header-right {
+                flex: 0 0 auto;
+            }
+
+            .instagram-link {
+                font-size: 12px;
+            }
+
+            .book-call-btn {
+                font-size: 12px;
+                padding: 8px 16px;
             }
 
             .hero h1 {
