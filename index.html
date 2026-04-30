@@ -95,6 +95,139 @@
             height: 16px;
         }
 
+        /* What We Do Section */
+        .what-we-do {
+            padding: 40px 20px;
+            background: rgba(212, 168, 67, 0.05);
+            border-top: 1px solid rgba(212, 168, 67, 0.2);
+            border-bottom: 1px solid rgba(212, 168, 67, 0.2);
+            margin: 30px 0;
+        }
+
+        .what-we-do h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .what-we-do-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 16px;
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .what-we-do-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .what-we-do-card {
+            background: rgba(212, 168, 67, 0.08);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .what-we-do-card:hover {
+            background: rgba(212, 168, 67, 0.15);
+            border-color: rgba(212, 168, 67, 0.6);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .what-we-do-card h3 {
+            font-size: 16px;
+            color: #D4A843;
+            margin-bottom: 10px;
+        }
+
+        .what-we-do-card p {
+            font-size: 13px;
+            color: #a0a0a0;
+            line-height: 1.5;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 40px 20px;
+            margin: 30px 0;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(212, 168, 67, 0.1) 0%, rgba(212, 168, 67, 0.05) 100%);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(212, 168, 67, 0.6);
+            box-shadow: 0 8px 20px rgba(212, 168, 67, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-icon {
+            font-size: 28px;
+        }
+
+        .testimonial-card h3 {
+            font-size: 14px;
+            color: #D4A843;
+            margin: 0;
+        }
+
+        .testimonial-quote {
+            font-size: 14px;
+            color: #e0e0e0;
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .testimonial-result {
+            font-size: 12px;
+            color: #D4A843;
+            margin: 0;
+        }
+
         .logo {
             font-size: 18px;
             font-weight: 700;
@@ -561,6 +694,19 @@
                 padding: 8px 16px;
             }
 
+            .what-we-do-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .what-we-do h2,
+            .testimonials h2 {
+                font-size: 22px;
+            }
+
             .hero h1 {
                 font-size: 24px;
             }
@@ -634,6 +780,76 @@
                     <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                 </svg>
                 <span>🔊 Click "Unmute Video" to enable sound and watch the full presentation.</span>
+            </div>
+        </section>
+
+        <!-- What We Do Section -->
+        <section class="what-we-do">
+            <h2>Here's What We Do</h2>
+            <div class="what-we-do-content">
+                <p class="intro-text">We teach local service businesses how to use Instagram ads to attract high-paying clients and build a predictable revenue stream—without depending on us or any agency.</p>
+                
+                <div class="what-we-do-grid">
+                    <div class="what-we-do-card">
+                        <div class="card-icon">🎯</div>
+                        <h3>We Build Your Brand</h3>
+                        <p>We create a professional brand presence that positions you as the go-to authority in your local market.</p>
+                    </div>
+                    <div class="what-we-do-card">
+                        <div class="card-icon">📱</div>
+                        <h3>We Build Your Ad System</h3>
+                        <p>We design and launch Instagram ads that attract qualified leads ready to hire your services.</p>
+                    </div>
+                    <div class="what-we-do-card">
+                        <div class="card-icon">🎓</div>
+                        <h3>We Teach You Everything</h3>
+                        <p>You learn the entire system so you can run it yourself. No ongoing dependency. No need for multiple agencies.</p>
+                    </div>
+                    <div class="what-we-do-card">
+                        <div class="card-icon">💰</div>
+                        <h3>You Keep The System</h3>
+                        <p>Once you have it, it's yours. Run it in-house, scale it, and keep all the profits.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2>Real Results From Real Clients</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-icon">🔥</div>
+                        <h3>Contracting Company</h3>
+                    </div>
+                    <p class="testimonial-quote">"I came in. Built the brand. Built the ad. Built the system. Less than $1K in ad spend. $200K+ in potential contracts in month one."</p>
+                    <p class="testimonial-result"><strong>Result:</strong> $200K+ in potential contracts in the first month</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-icon">💎</div>
+                        <h3>Service Business Owner</h3>
+                    </div>
+                    <p class="testimonial-quote">"From 41 followers to 1,100+ this is what building a real brand on Instagram looks like."</p>
+                    <p class="testimonial-result"><strong>Result:</strong> Built real brand authority in weeks</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-icon">🏆</div>
+                        <h3>Rental Company</h3>
+                    </div>
+                    <p class="testimonial-quote">"It's not just the ad. It's the strategy behind it. The targeting. The system."</p>
+                    <p class="testimonial-result"><strong>Result:</strong> Went from unknown to "the go-to" in their area</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-icon">⚡</div>
+                        <h3>Another Client Win</h3>
+                    </div>
+                    <p class="testimonial-quote">"$4,800 profit in 3 days. Less than 1k ad spend. It's only been almost exactly a week!"</p>
+                    <p class="testimonial-result"><strong>Result:</strong> $4,800 profit in just 3 days</p>
+                </div>
             </div>
         </section>
 
