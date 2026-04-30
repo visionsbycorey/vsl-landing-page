@@ -46,6 +46,26 @@
 
         .header-right {
             flex: 0 0 auto;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #D4A843;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #e8b84f;
+        }
+
+        .nav-link.active {
+            border-bottom: 2px solid #D4A843;
+            padding-bottom: 2px;
         }
 
         .instagram-link {
@@ -384,50 +404,6 @@
             color: #a0a0a0;
             margin-bottom: 15px;
             line-height: 1.6;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #D4A843;
-            color: #000;
-            border: none;
-            padding: 14px 32px;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-bottom: 12px;
-        }
-
-        .cta-button:hover {
-            background: #e8b84f;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 168, 67, 0.3);
-        }
-
-        .cta-button svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .time-note {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            font-size: 12px;
-            color: #808080;
-        }
-
-        .time-note svg {
-            width: 16px;
-            height: 16px;
         }
 
         /* Modal */
@@ -440,62 +416,34 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.3s ease;
-            overflow-y: auto;
+            overflow: auto;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .modal-content {
             background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-            margin: 10% auto;
             padding: 30px;
             border: 1px solid rgba(212, 168, 67, 0.2);
             border-radius: 12px;
             width: 90%;
-            max-width: 450px;
-            max-height: 85vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(212, 168, 67, 0.2);
-        }
-
-        .modal-header h2 {
-            font-size: 20px;
-            font-weight: 700;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
 
         .close-btn {
-            background: none;
-            border: none;
-            color: #a0a0a0;
+            position: absolute;
+            right: 15px;
+            top: 15px;
             font-size: 28px;
+            font-weight: bold;
+            color: #808080;
             cursor: pointer;
-            transition: color 0.3s ease;
-            width: 40px;
-            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -634,6 +582,15 @@
             text-align: center;
         }
 
+        /* Page visibility */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -683,6 +640,8 @@
 
             .header-right {
                 flex: 0 0 auto;
+                flex-wrap: wrap;
+                gap: 10px;
             }
 
             .instagram-link {
@@ -692,6 +651,10 @@
             .book-call-btn {
                 font-size: 12px;
                 padding: 8px 16px;
+            }
+
+            .nav-link {
+                font-size: 11px;
             }
 
             .what-we-do-grid {
@@ -739,6 +702,8 @@
                 <div class="logo">VISIONS <span>BY COREY</span> MEDIA LLC</div>
             </div>
             <div class="header-right">
+                <a href="#" onclick="showPage('home')" class="nav-link active" id="homeLink">Home</a>
+                <a href="#" onclick="showPage('testimonials')" class="nav-link" id="testimonialsLink">Testimonials</a>
                 <a href="https://calendly.com/visionsbycorey-info/discoverycall" target="_blank" class="book-call-btn">
                     <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.3-1.54c-.3-.36-.77-.36-1.07 0-.3.36-.3.95 0 1.31l1.83 2.19c.3.36.77.36 1.07 0l3.29-4.04c.3-.36.3-.95 0-1.31-.3-.36-.77-.36-1.07 0z"/>
@@ -748,337 +713,273 @@
             </div>
         </header>
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="badge">🔒 Central Connecticut — Limited Spots Available</div>
-            <h1>How Connecticut<br>Service Businesses Are<br><span class="highlight">Dominating Their Local Market</span><br>With One Simple Ad</h1>
-            <p>Watch the short video below to see exactly how it works.</p>
-        </section>
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="badge">🔒 Central Connecticut — Limited Spots Available</div>
+                <h1>How Connecticut<br>Service Businesses Are<br><span class="highlight">Dominating Their Local Market</span><br>With One Simple Ad</h1>
+                <p>Watch the short video below to see exactly how it works.</p>
+            </section>
 
-        <!-- Video Section -->
-        <section class="video-section">
-            <div class="video-wrapper">
-                <div class="video-container">
-                    <iframe 
-                        id="vslVideo"
-                        src="https://www.youtube.com/embed/OdxcyI2dAGk?autoplay=1&mute=1&controls=1&rel=0" 
-                        allowfullscreen="" 
-                        allow="autoplay; encrypted-media"
-                        title="Visions By Corey - Local Authority Program">
-                    </iframe>
+            <!-- Video Section -->
+            <section class="video-section">
+                <div class="video-wrapper">
+                    <div class="video-container">
+                        <iframe 
+                            id="vslVideo"
+                            src="https://www.youtube.com/embed/OdxcyI2dAGk?autoplay=1&mute=1&controls=1&rel=0" 
+                            allowfullscreen="" 
+                            allow="autoplay; encrypted-media"
+                            title="Visions By Corey - Local Authority Program">
+                        </iframe>
+                    </div>
+                    <button class="unmute-button" id="unmuteBtn" onclick="unmuteVideo()">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.26 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
+                        </svg>
+                        Unmute Video
+                    </button>
                 </div>
-                <button class="unmute-button" id="unmuteBtn" onclick="unmuteVideo()">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.26 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
+                <div class="video-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 7l-7 5 7 5V7z"></path>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                     </svg>
-                    Unmute Video
-                </button>
-            </div>
-            <div class="video-note">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M23 7l-7 5 7 5V7z"></path>
-                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                </svg>
-                <span>🔊 Click "Unmute Video" to enable sound and watch the full presentation.</span>
-            </div>
-        </section>
+                    <span>🔊 Click "Unmute Video" to enable sound and watch the full presentation.</span>
+                </div>
+            </section>
 
-        <!-- What We Do Section -->
-        <section class="what-we-do">
-            <h2>Here's What We Do</h2>
-            <div class="what-we-do-content">
-                <p class="intro-text">We teach local service businesses how to use Instagram ads to attract high-paying clients and build a predictable revenue stream—without depending on us or any agency.</p>
-                
-                <div class="what-we-do-grid">
-                    <div class="what-we-do-card">
-                        <div class="card-icon">🎯</div>
-                        <h3>We Build Your Brand</h3>
-                        <p>We create a professional brand presence that positions you as the go-to authority in your local market.</p>
-                    </div>
-                    <div class="what-we-do-card">
-                        <div class="card-icon">📱</div>
-                        <h3>We Build Your Ad System</h3>
-                        <p>We design and launch Instagram ads that attract qualified leads ready to hire your services.</p>
-                    </div>
-                    <div class="what-we-do-card">
-                        <div class="card-icon">🎓</div>
-                        <h3>We Teach You Everything</h3>
-                        <p>You learn the entire system so you can run it yourself. No ongoing dependency. No need for multiple agencies.</p>
-                    </div>
-                    <div class="what-we-do-card">
-                        <div class="card-icon">💰</div>
-                        <h3>You Keep The System</h3>
-                        <p>Once you have it, it's yours. Run it in-house, scale it, and keep all the profits.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <!-- CTA Section with Form -->
+            <section class="cta-section">
+                <h2>Ready to Dominate Your Local Market?</h2>
+                <p>Book a discovery call to see if we're the right fit for your business.</p>
+                <button class="submit-btn" onclick="openForm()">Get Started Now</button>
+            </section>
 
-        <!-- Testimonials Section -->
-        <section class="testimonials">
-            <h2>Real Results From Real Clients</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-icon">🔥</div>
-                        <h3>Contracting Company</h3>
+            <!-- What We Do Section -->
+            <section class="what-we-do">
+                <h2>Here's What We Do</h2>
+                <div class="what-we-do-content">
+                    <p class="intro-text">"I came in. Built the brand. Built the ad. Built the system. Less than $1K in ad spend. $200K+ in potential contracts in month one."</p>
+                    
+                    <div class="what-we-do-grid">
+                        <div class="what-we-do-card">
+                            <div class="card-icon">🏗️</div>
+                            <h3>We Build Your Brand</h3>
+                            <p>Create a professional brand presence that positions you as the go-to authority in your local market.</p>
+                        </div>
+                        <div class="what-we-do-card">
+                            <div class="card-icon">📱</div>
+                            <h3>We Build Your Ad System</h3>
+                            <p>Design and launch Instagram ads that attract qualified leads ready to hire your services.</p>
+                        </div>
+                        <div class="what-we-do-card">
+                            <div class="card-icon">🎓</div>
+                            <h3>We Teach You Everything</h3>
+                            <p>You learn the entire system so you can run it yourself. No ongoing dependency. No need for multiple agencies.</p>
+                        </div>
+                        <div class="what-we-do-card">
+                            <div class="card-icon">💰</div>
+                            <h3>You Keep The System</h3>
+                            <p>Once you have it, it's yours. Run it in-house, scale it, and keep all the profits.</p>
+                        </div>
                     </div>
-                    <p class="testimonial-quote">"I came in. Built the brand. Built the ad. Built the system. Less than $1K in ad spend. $200K+ in potential contracts in month one."</p>
-                    <p class="testimonial-result"><strong>Result:</strong> $200K+ in potential contracts in the first month</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-icon">💎</div>
-                        <h3>Service Business Owner</h3>
-                    </div>
-                    <p class="testimonial-quote">"From 41 followers to 1,100+ this is what building a real brand on Instagram looks like."</p>
-                    <p class="testimonial-result"><strong>Result:</strong> Built real brand authority in weeks</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-icon">🏆</div>
-                        <h3>Rental Company</h3>
-                    </div>
-                    <p class="testimonial-quote">"It's not just the ad. It's the strategy behind it. The targeting. The system."</p>
-                    <p class="testimonial-result"><strong>Result:</strong> Went from unknown to "the go-to" in their area</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-icon">⚡</div>
-                        <h3>Another Client Win</h3>
-                    </div>
-                    <p class="testimonial-quote">"$4,800 profit in 3 days. Less than 1k ad spend. It's only been almost exactly a week!"</p>
-                    <p class="testimonial-result"><strong>Result:</strong> $4,800 profit in just 3 days</p>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
-        <!-- CTA Section -->
-        <section class="cta-section">
-            <h2>Ready To Get Started?</h2>
-            <p>Fill out this quick 1-minute form and we'll reach out to see if you're a good fit.<br>After submitting you'll be able to book your free discovery call.</p>
-            <button class="cta-button" onclick="openModal()">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 5a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM3 14a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3z"></path>
-                </svg>
-                Fill Out The Quick Form
-            </button>
-            <div class="time-note">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                <span>Takes less than 1 minute</span>
-            </div>
-        </section>
+        <!-- TESTIMONIALS PAGE -->
+        <div id="testimonials" class="page">
+            <section class="testimonials">
+                <h2>Real Results From Real Clients</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-icon">🔥</div>
+                            <h3>Contracting Company</h3>
+                        </div>
+                        <p class="testimonial-quote">"So far we got 1 signed contract 80k, and 2 most likely (1) which is about to sign 40k and (2) a 200k job."</p>
+                        <p class="testimonial-result"><strong>Result:</strong> $200K+ in potential contracts</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-icon">💎</div>
+                            <h3>Service Business Owner</h3>
+                        </div>
+                        <p class="testimonial-quote">"From 41 followers to 1,100+ this is what building a real brand on Instagram looks like."</p>
+                        <p class="testimonial-result"><strong>Result:</strong> Built real brand authority in weeks</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-icon">🏆</div>
+                            <h3>Rental Company</h3>
+                        </div>
+                        <p class="testimonial-quote">"It's not just the ad. It's the strategy behind it. The targeting. The system."</p>
+                        <p class="testimonial-result"><strong>Result:</strong> Went from unknown to "the go-to" in their area</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-icon">⚡</div>
+                            <h3>Another Client Win</h3>
+                        </div>
+                        <p class="testimonial-quote">"Letsss goooo! 1 month of running the ad and less than 1k ad spend."</p>
+                        <p class="testimonial-result"><strong>Result:</strong> $4,800 profit in just 3 days</p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
 
     <!-- Form Modal -->
     <div id="formModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>Apply For The Local Authority Program</h2>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
-            </div>
+            <span class="close-btn" onclick="closeForm()">&times;</span>
+            <h2 style="margin-bottom: 20px; color: #fff;">Book Your Discovery Call</h2>
+            <form id="leadForm" onsubmit="submitForm(event)">
+                <div class="success-message" id="successMessage">
+                    Thank you! We'll be in touch soon. Redirecting to Calendly...
+                </div>
+                <div class="error-message" id="errorMessage"></div>
 
-            <div class="success-message" id="successMessage">
-                ✓ Application submitted! Redirecting to book your discovery call...
-            </div>
-
-            <div class="error-message" id="errorMessage">
-                ✗ There was an error submitting your application. Please try again.
-            </div>
-
-            <form id="applicationForm" onsubmit="handleFormSubmit(event)">
-                <!-- First Name -->
                 <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" placeholder="First name" required>
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
                 </div>
 
-                <!-- Last Name -->
                 <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
                 </div>
 
-                <!-- Business Name -->
                 <div class="form-group">
-                    <label for="businessName">Business Name</label>
-                    <input type="text" id="businessName" name="businessName" placeholder="Your business name" required>
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
                 </div>
 
-                <!-- Business Type -->
                 <div class="form-group">
-                    <label for="businessType">Business Type</label>
-                    <select id="businessType" name="businessType" required>
-                        <option value="">Select your industry</option>
+                    <label for="business">Business Type *</label>
+                    <select id="business" name="business" required>
+                        <option value="">Select your business type</option>
+                        <option value="Contracting">Contracting</option>
                         <option value="Plumbing">Plumbing</option>
                         <option value="HVAC">HVAC</option>
                         <option value="Electrical">Electrical</option>
                         <option value="Roofing">Roofing</option>
                         <option value="Landscaping">Landscaping</option>
                         <option value="Cleaning">Cleaning</option>
-                        <option value="Painting">Painting</option>
-                        <option value="Carpentry">Carpentry</option>
-                        <option value="Masonry">Masonry</option>
-                        <option value="Real Estate">Real Estate</option>
-                        <option value="Med Spa">Med Spa</option>
-                        <option value="Salon/Spa">Salon/Spa</option>
-                        <option value="Fitness">Fitness</option>
-                        <option value="Detailing">Detailing</option>
-                        <option value="Contracting">Contracting</option>
-                        <option value="Other">Other</option>
+                        <option value="Other">Other Service Business</option>
                     </select>
                 </div>
 
-                <!-- Phone Number -->
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required>
+                    <label for="message">Tell us about your business *</label>
+                    <textarea id="message" name="message" placeholder="What services do you offer? What are your goals?" required></textarea>
                 </div>
 
-                <!-- City -->
-                <div class="form-group">
-                    <label for="city">City</label>
-                    <input type="text" id="city" name="city" placeholder="Waterbury, CT" required>
-                </div>
+                <button type="submit" class="submit-btn">Book Discovery Call</button>
 
-                <!-- Current Monthly Revenue -->
-                <div class="form-group">
-                    <label for="revenue">Current Monthly Revenue</label>
-                    <select id="revenue" name="revenue" required>
-                        <option value="">Select your current revenue</option>
-                        <option value="Under $5k">Under $5,000</option>
-                        <option value="$5k - $10k">$5,000 - $10,000</option>
-                        <option value="$10k - $25k">$10,000 - $25,000</option>
-                        <option value="$25k - $50k">$25,000 - $50,000</option>
-                        <option value="$50k - $100k">$50,000 - $100,000</option>
-                        <option value="$100k+">$100,000+</option>
-                    </select>
-                </div>
-
-                <!-- Biggest Challenge -->
-                <div class="form-group">
-                    <label for="challenge">Biggest Challenge Right Now</label>
-                    <textarea id="challenge" name="challenge" placeholder="e.g. Not enough consistent leads..." required></textarea>
-                </div>
-
-                <!-- Submit Button -->
-                <button type="submit" class="submit-btn" id="submitBtn">Submit & Book My Discovery Call →</button>
-
-                <!-- Privacy Note -->
                 <div class="privacy-note">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"></path>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
-                    <span>Your info is 100% private and never shared. You'll be redirected to book your call right after submitting.</span>
+                    <span>Your information is secure and will only be used to contact you about your discovery call.</span>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-logo">VISIONS <span>BY COREY</span> MEDIA LLC</div>
         <div class="footer-email">info@visionsbycorey.com</div>
-        <div class="footer-copyright">© 2026 Visions By Corey Media LLC — All Rights Reserved</div>
+        <div class="footer-copyright">&copy; 2026 Visions By Corey Media LLC. All rights reserved.</div>
     </footer>
 
     <script>
-        // Modal Functions
-        function openModal() {
-            document.getElementById('formModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
+        function openForm() {
+            document.getElementById('formModal').classList.add('show');
         }
 
-        function closeModal() {
-            document.getElementById('formModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
+        function closeForm() {
+            document.getElementById('formModal').classList.remove('show');
+            document.getElementById('leadForm').reset();
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
         }
 
-        // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('formModal');
             if (event.target == modal) {
-                closeModal();
+                closeForm();
             }
         }
 
-        // Handle Form Submission
-        async function handleFormSubmit(event) {
-            event.preventDefault();
+        function unmuteVideo() {
+            const video = document.getElementById('vslVideo');
+            const newSrc = video.src.replace('&mute=1', '');
+            video.src = newSrc;
+            document.getElementById('unmuteBtn').classList.add('hidden');
+        }
 
-            // Get form data
+        async function submitForm(event) {
+            event.preventDefault();
+            
             const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                businessName: document.getElementById('businessName').value,
-                businessType: document.getElementById('businessType').value,
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
-                city: document.getElementById('city').value,
-                revenue: document.getElementById('revenue').value,
-                challenge: document.getElementById('challenge').value,
-                submittedAt: new Date().toISOString()
+                business: document.getElementById('business').value,
+                message: document.getElementById('message').value
             };
 
-            // Disable submit button
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
-
-            // Hide error message
-            document.getElementById('errorMessage').style.display = 'none';
-
             try {
-                // Send to backend
-                const response = await fetch('/api/submit-form', {
+                const response = await fetch('/api/submit-lead', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json',
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(formData)
                 });
 
-                if (!response.ok) {
-                    throw new Error('Failed to submit form');
+                if (response.ok) {
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('errorMessage').style.display = 'none';
+                    
+                    setTimeout(() => {
+                        window.location.href = 'https://calendly.com/visionsbycorey-info/discoverycall';
+                    }, 2000);
+                } else {
+                    throw new Error('Form submission failed');
                 }
-
-                // Show success message
-                document.getElementById('successMessage').style.display = 'block';
-
-                // Redirect to Calendly after a short delay
-                setTimeout(() => {
-                    window.location.href = 'https://calendly.com/visionsbycorey-info/discoverycall';
-                }, 1500);
-
             } catch (error) {
-                console.error('Error:', error);
+                document.getElementById('errorMessage').textContent = 'Error submitting form. Please try again.';
                 document.getElementById('errorMessage').style.display = 'block';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit & Book My Discovery Call →';
             }
         }
 
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageName).classList.add('active');
+            
+            // Add active class to clicked nav link
+            if (pageName === 'home') {
+                document.getElementById('homeLink').classList.add('active');
+            } else if (pageName === 'testimonials') {
+                document.getElementById('testimonialsLink').classList.add('active');
             }
-        });
-
-        // Unmute Video Function
-        function unmuteVideo() {
-            const iframe = document.getElementById('vslVideo');
-            const unmuteBtn = document.getElementById('unmuteBtn');
             
-            // Update iframe src to remove mute parameter
-            const currentSrc = iframe.src;
-            const newSrc = currentSrc.replace('&mute=1', '');
-            iframe.src = newSrc;
-            
-            // Hide the unmute button
-            unmuteBtn.classList.add('hidden');
+            // Scroll to top
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
