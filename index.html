@@ -383,6 +383,136 @@
             flex-shrink: 0;
         }
 
+        /* Problem/Solution Section */
+        .problem-solution {
+            padding: 30px 20px;
+            margin: 20px 0;
+            background: linear-gradient(135deg, rgba(212, 168, 67, 0.08) 0%, rgba(212, 168, 67, 0.03) 100%);
+            border: 1px solid rgba(212, 168, 67, 0.2);
+            border-radius: 12px;
+        }
+
+        .problem-solution h2 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .problem-solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .problem-solution-item h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #D4A843;
+        }
+
+        .problem-solution-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .problem-solution-item li {
+            font-size: 14px;
+            color: #a0a0a0;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .problem-solution-item li:before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .problem-solution-item.solution li:before {
+            content: "✓";
+            color: #4CAF50;
+        }
+
+        .arrow-divider {
+            text-align: center;
+            font-size: 28px;
+            color: #D4A843;
+            margin: 0 -15px;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            padding: 30px 20px;
+            margin: 20px 0;
+        }
+
+        .timeline h2 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .timeline-card {
+            background: linear-gradient(135deg, rgba(212, 168, 67, 0.1) 0%, rgba(212, 168, 67, 0.05) 100%);
+            border: 1px solid rgba(212, 168, 67, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .timeline-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #D4A843;
+            margin-bottom: 10px;
+        }
+
+        .timeline-card p {
+            font-size: 13px;
+            color: #a0a0a0;
+            line-height: 1.5;
+        }
+
+        /* Video Testimonial Section */
+        .video-testimonial {
+            padding: 30px 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .video-testimonial h2 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .video-testimonial-container {
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 168, 67, 0.3);
+        }
+
+        .video-testimonial-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
         /* CTA Section - Condensed */
         .cta-section {
             text-align: center;
@@ -747,6 +877,65 @@
                         <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                     </svg>
                     <span>🔊 Click "Unmute Video" to enable sound and watch the full presentation.</span>
+                </div>
+            </section>
+
+            <!-- Problem/Solution Section -->
+            <section class="problem-solution">
+                <h2>The Problem vs. The Solution</h2>
+                <div class="problem-solution-grid">
+                    <div class="problem-solution-item">
+                        <h3>The Problem</h3>
+                        <ul>
+                            <li>Relying on word of mouth for leads</li>
+                            <li>Not the most known business in your market</li>
+                            <li>Losing clients to competitors who are visible</li>
+                            <li>No consistent system for getting leads</li>
+                            <li>Stuck at the same revenue level</li>
+                        </ul>
+                    </div>
+                    <div class="arrow-divider">→</div>
+                    <div class="problem-solution-item solution">
+                        <h3>The Solution</h3>
+                        <ul>
+                            <li>Build your brand on Instagram</li>
+                            <li>Become THE most known business in your area</li>
+                            <li>Attract qualified leads consistently</li>
+                            <li>Own a system that works without you</li>
+                            <li>Scale your revenue predictably</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Timeline Section -->
+            <section class="timeline">
+                <h2>Here's What Happens</h2>
+                <div class="timeline-grid">
+                    <div class="timeline-card">
+                        <h3>Week 1</h3>
+                        <p>Brand setup, first ad filmed, profile optimized, system explained</p>
+                    </div>
+                    <div class="timeline-card">
+                        <h3>Week 2-3</h3>
+                        <p>Ads go live, first leads come in, you see results, confidence grows</p>
+                    </div>
+                    <div class="timeline-card">
+                        <h3>Week 4+</h3>
+                        <p>System running independently, leads flowing in, you're in control</p>
+                    </div>
+                    <div class="timeline-card">
+                        <h3>Month 2+</h3>
+                        <p>Scaling up, more leads, bigger contracts, becoming the go-to in your area</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Testimonial Section -->
+            <section class="video-testimonial">
+                <h2>See It In Action - Real Client Win</h2>
+                <div class="video-testimonial-container">
+                    <iframe src="https://www.instagram.com/reel/DVJkQJ_juhD/embed" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
             </section>
 
