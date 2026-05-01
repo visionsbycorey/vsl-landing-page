@@ -14,7 +14,82 @@ app.use(express.static(path.join(__dirname)));
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Form submission endpoint
+// Form submission endpoint - /api/submit-lead (NEW)
+app.post('/api/submit-lead', async (req, res) => {
+    try {
+        const {
+            name,
+            instagram,
+            email,
+            phone,
+            business,
+            revenue,
+            message
+        } = req.body;
+
+        // Validate required fields
+        if (!name || !email || !phone || !business || !revenue || !message) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
+
+        // Create email content
+        const emailContent = `
+            <h2>New Discovery Call Booking</h2>
+            <hr>
+            <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
+            <hr>
+            
+            <h3>Contact Information</h3>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            ${instagram ? `<p><strong>Instagram Handle:</strong> ${instagram}</p>` : ''}
+            
+            <h3>Business Information</h3>
+            <p><strong>Business Type:</strong> ${business}</p>
+            <p><strong>Monthly Revenue:</strong> ${revenue}</p>
+            
+            <h3>Challenges</h3>
+            <p>${message}</p>
+            
+            <hr>
+            <p><em>This is an automated email from your Visions By Corey landing page.</em></p>
+        `;
+
+        console.log('Attempting to send email to:', 'info@visionsbycorey.com');
+
+        // Send email using Resend's verified domain
+        const emailResponse = await resend.emails.send({
+            from: 'Visions By Corey <onboarding@resend.dev>',
+            to: 'info@visionsbycorey.com',
+            subject: `New Discovery Call Booking: ${name}`,
+            html: emailContent
+        });
+
+        console.log('Email response:', emailResponse);
+
+        if (emailResponse.error) {
+            console.error('Resend error:', emailResponse.error);
+            throw new Error(emailResponse.error.message);
+        }
+
+        console.log('Email sent successfully:', emailResponse.id);
+
+        res.json({ 
+            success: true, 
+            message: 'Lead submitted successfully' 
+        });
+
+    } catch (error) {
+        console.error('Error submitting form:', error.message);
+        res.status(500).json({ 
+            error: 'Failed to submit lead. Please try again.',
+            details: error.message
+        });
+    }
+});
+
+// Keep old endpoint for backwards compatibility
 app.post('/api/submit-form', async (req, res) => {
     try {
         const {
