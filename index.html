@@ -513,6 +513,45 @@
             border: none;
         }
 
+        /* Testimonials Videos Section */
+        .testimonials-videos {
+            padding: 30px 20px;
+            margin: 20px 0;
+        }
+
+        .testimonials-videos h2 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .videos-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .video-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .video-wrapper h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #D4A843;
+            margin: 0;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            border-radius: 12px;
+        }
+
         /* CTA Section - Condensed */
         .cta-section {
             text-align: center;
@@ -926,16 +965,7 @@
                 </div>
             </section>
 
-            <!-- Video Testimonial Section -->
-            <section class="video-testimonial">
-                <h2>See It In Action - Real Client Win</h2>
-                <div class="video-testimonial-container">
-                    <video width="100%" height="500" autoplay muted controls style="border-radius: 12px; background: #000;">
-                        <source src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663526462811/hBlzASJaqaWTXKok.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </section>
+
 
             <!-- CTA Section with Form -->
             <section class="cta-section">
@@ -1002,6 +1032,27 @@
                         </div>
                         <p class="testimonial-quote">"I came in with no expectations. My expectations grew and I was blown away! Don't wait. Time waits for no one. This will take you to the next level."</p>
                         <p class="testimonial-result"><strong>Result:</strong> Complete brand setup, ad, and system built after first ad shoot</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Testimonials Section -->
+            <section class="testimonials-videos">
+                <h2>Client Testimonials - Video</h2>
+                <div class="videos-container">
+                    <div class="video-wrapper">
+                        <h3>DJT - Contracting Company</h3>
+                        <video width="100%" height="400" autoplay muted controls style="border-radius: 12px; background: #000;">
+                            <source src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663526462811/hBlzASJaqaWTXKok.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-wrapper">
+                        <h3>Property Management - Venessa</h3>
+                        <video width="100%" height="400" autoplay muted controls style="border-radius: 12px; background: #000;">
+                            <source src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663526462811/ZwBvFGWhyLbWgdtG.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
                 </div>
             </section>
